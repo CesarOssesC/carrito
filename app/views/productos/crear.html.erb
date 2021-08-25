@@ -1,3 +1,5 @@
+
+
 <div class="container">
     <h1>Crear Nuevo Producto</h1>
 
@@ -7,11 +9,6 @@
                 <p style="color:red;"> <%= error.full_message %></p>
             <% end %>
         <% end %>
-            <div class="mb-3 col-6">
-                <%= formulario.label :id, class: 'form-label' %>
-                <%= formulario.text_field :id, class: 'form-control' %>
-            </div>
-            <br>
             <div class="mb-3 col-6">
                 <%= formulario.label :nombre, class: 'form-label' %>
                 <%= formulario.text_field :nombre, class: 'form-control' %>
@@ -30,6 +27,18 @@
             <div class="mb-3 col-6">
                 <%= formulario.label :descripcion, class: 'form-label' %>
                 <%= formulario.text_area :descripcion, class: 'form-control' %>
+            </div>
+            <br>
+            <div class="mb-3">
+                <%= formulario.label :categoria_id, class: 'form-label' %>
+                
+                <%= formulario.select :categoria_id, options_from_collection_for_select(@categorias, :id, :categoria), {class: 'form-select'} %>
+                
+                    
+            </div>
+            <div class="mb-3">
+                <%= formulario.label :imagenes %>
+                <%= formulario.file_field :imagenes, multiple: true %>
             </div>
             <br>
             <br>

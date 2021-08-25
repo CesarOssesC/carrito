@@ -26,17 +26,26 @@ class CategoriasController < ApplicationController
     end
 
     def actualizar
-
+        if @categoria_nueva.update(categoria_params)
+            redirect_to categorias_path
+        else
+            render :editar
+        end
     end
 
     def eliminar
-
+        @categoria_nueva.destroy
+        redirect_to categorias_path
     end
 
     private
 
     def categoria_params
         params.require(:categoria).permit(:categoria)
+    end
+
+    def asignar_categoria
+        @categoria_nueva = Categoria.find(params[:id])
     end
 
 end

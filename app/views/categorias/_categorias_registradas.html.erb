@@ -1,6 +1,6 @@
 <tr>
-            <th scope="row" width="10%" ><%= categoria_nueva.id %></th>
-            
-            <td><%= link_to categoria_nueva.categoria, categorias_path(categoria_nueva), style:"color: black; text-decoration: none; " %></td>
-            <td width="10%" ><%= link_to "Editar", editar_categorias_path(categoria_nueva), style:"color: black;" %> | <%= link_to "Eliminar", eliminar_categorias_path(categoria_nueva), method: :delete, data:{confirm: '¿Seguro que quieres eliminar?'}, style:"color: black;"  %></td>
-        </tr>
+    <th scope="row" width="10%" ><%= categoria_nueva.id %></th>
+    
+    <td><%= link_to categoria_nueva.categoria, categorias_path(categoria_nueva), style:"color: black; text-decoration: none; " %></td>
+    <td width="10%" ><%= link_to "Editar", editar_categorias_path(categoria_nueva), style:"color: black;" %> | <%= link_to "Eliminar", eliminar_categorias_path(categoria_nueva), method: :delete, data:{confirm: '¿Seguro que quieres eliminar?'}, style:"color: black;"  %></td>
+</tr>

@@ -1,7 +1,7 @@
 class ProductosController < ApplicationController
 
     def index
-
+        @lista_productos = Producto.includes(:categoria).select(:id, :nombre, :precio, :descripcion, :cantidad, :categoria_id).order(id: :asc)
     end
 
     def mostrar
@@ -10,6 +10,7 @@ class ProductosController < ApplicationController
 
     def crear
         @producto_nuevo = Producto.new
+        @categorias = Categoria.select(:id, :categoria).order(categoria: :asc)
     end
 
     def guardar
@@ -17,14 +18,14 @@ class ProductosController < ApplicationController
         @producto_nuevo = Producto.new(producto_params)
         
         if @producto_nuevo.save
-            redirect_to action: "index"
+            redirect_to action: :index
         else
             render :crear
         end
     end
 
     def editar
-        @producto_nuevo = Producto.select(:id, :nombre, :precio, :descripcion, :cantidad).order(id: :asc)
+        @producto_nuevo = Producto.select(:id, :nombre, :precio, :descripcion, :cantidad, :categoria_id).order(id: :asc)
     end
 
     def actualizar
@@ -38,7 +39,7 @@ class ProductosController < ApplicationController
     private
 
     def producto_params
-        return params.require(:producto).permit(:id, :nombre, :precio, :descripcion, :cantidad)
+        return params.require(:producto).permit(:nombre, :precio, :descripcion, :cantidad, :categoria_id, imagenes: [])
     end
 
 end

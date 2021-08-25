@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   get 'productos',            to: 'productos#index',      as: 'productos'
   get 'productos/crear',      to: 'productos#crear'
   get 'productos/:id',        to: 'prodcutos#mostrar'
-  get 'productos/:id/editar', to: 'productos#editar'
+  get 'productos/:id/editar', to: 'productos#editar',     as: 'editar_productos'
 
   post 'productos/guardar',    to: 'productos#guardar'
   put 'productos/:id',         to: 'productos#actualizar'
   patch 'productos/:id',       to: 'productos#actualizar'
-  delete 'productos/:id',      to: 'productos#eliminar'
+  delete 'productos/:id',      to: 'productos#eliminar',  as: 'eliminar_productos'
 
   get 'categorias',            to: 'categorias#index',      as: 'categorias'
   get 'categorias/crear',      to: 'categorias#crear'
