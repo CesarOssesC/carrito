@@ -1,0 +1,27 @@
+<div class="container">    
+    <h1>Lista de inquilinos registrados</h1>
+
+    <%= link_to 'Crear Nueva Categoria', "/categorias/crear", class:"btn btn-primary" %>
+    <br>
+    <br>
+    <table class="table table-hover table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Categoria</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <% @lista_categorias.each do |lista| %>
+            
+                    <%= render 'categorias_registradas', categoria_nueva: lista %>
+
+                <% end %>
+                
+            </tr>
+            
+        </tbody>
+    </table>
+</div>

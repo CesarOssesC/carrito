@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Crear Nuevo Producto</h1>
+
+    <%= form_with(model: @producto_nuevo, url: '/productos/guardar') do |formulario| %>
+        <% if @producto_nuevo.errors.any? %>
+            <% @producto_nuevo.errors.each do |error| %>
+                <p style="color:red;"> <%= error.full_message %></p>
+            <% end %>
+        <% end %>
+            <div class="mb-3 col-6">
+                <%= formulario.label :id, class: 'form-label' %>
+                <%= formulario.text_field :id, class: 'form-control' %>
+            </div>
+            <br>
+            <div class="mb-3 col-6">
+                <%= formulario.label :nombre, class: 'form-label' %>
+                <%= formulario.text_field :nombre, class: 'form-control' %>
+            </div>
+            <br>
+            <div class="mb-3 col-6">
+                <%= formulario.label :precio, class: 'form-label' %>
+                <%= formulario.text_field :precio, class: 'form-control' %>
+            </div>
+            <br>
+            <div class="mb-3 col-6">
+                <%= formulario.label :cantidad, class: 'form-label' %>
+                <%= formulario.text_field :cantidad, class: 'form-control' %>
+            </div>
+            <br>
+            <div class="mb-3 col-6">
+                <%= formulario.label :descripcion, class: 'form-label' %>
+                <%= formulario.text_area :descripcion, class: 'form-control' %>
+            </div>
+            <br>
+            <br>
+            <%= formulario.submit 'Crear Producto' %>
+</div>
+<% end %>
