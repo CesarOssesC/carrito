@@ -1,4 +1,7 @@
 class CategoriasController < ApplicationController
+
+    before_action :asignar_categoria, only: [:mostrar, :editar, :actualizar, :eliminar]
+
     def index
         @lista_categorias = Categoria.select(:id, :categoria).order(id: :asc)
     end
@@ -27,7 +30,7 @@ class CategoriasController < ApplicationController
 
     def actualizar
         if @categoria_nueva.update(categoria_params)
-            redirect_to categorias_path
+            redirect_to action: :index
         else
             render :editar
         end

@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+ .contenedor {
+     position: relative;
+     margin-top: 2rem;
+ }
+
+ .titulo-seccion {
+     display: inline-block;
+     vertical-align: middle;
+ }
+
+ .filas-tabla {
+     margin: 0.2rem, 0, 0.2rem, 0;
+     border-radius: 0.5rem;
+ }
+
+ 

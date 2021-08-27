@@ -1,0 +1,43 @@
+<div class="row">
+        <div class="col-4 botones-links">
+            <%= link_to productos_path, class:"btn btn-primary" do %>
+                <i class="bi bi-card-list"></i>
+                Lista Productos
+            <% end %>
+        </div>
+    </div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-6 col-md-10 col-sm-12">
+        <div class="card w-75 m-auto">
+            <div class="row justify-content-center">
+                <% @producto_nuevo.imagenes.each do |img| %>
+                    <div class="<%= @columnas %>">
+                        <%= image_tag img, class:'card-img-top' %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="card-body">
+                <p>
+                    Fotos: <%= @producto_nuevo.imagenes.count %>/4
+                </p>
+                <h5 class="card-title"><%= @producto_nuevo.nombre %></h5>
+                <p class="card-text"><%= @producto_nuevo.descripcion %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Precio: <%= @producto_nuevo.precio %> CLP</li>
+                <li class="list-group-item">Disponibles: <%= @producto_nuevo.cantidad %> Unidades</li>
+            </ul>
+            <div class="card-body">
+                <%= link_to editar_productos_path(@producto_nuevo), class:"btn btn-warning" do %>
+                    <i class="bi bi-pencil-fill"></i>
+                    Editar
+                <% end %>
+                <%= link_to producto_path(@producto_nuevo), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class:"btn btn-danger" do %>                   
+                    <i class="bi bi-trash-fill"></i>
+                    Eliminar                    
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

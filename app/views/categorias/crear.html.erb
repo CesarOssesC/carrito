@@ -9,9 +9,10 @@
         <% end %>
             <div class="mb-3 col-6">
                 <%= formulario.label :categoria, class: 'form-label' %>
-                <%= formulario.text_field :categoria, class: 'form-control' %>
+                <%= formulario.text_field :categoria, class: 'form-control', autofocus: "autofocus" %>
             </div>
             <br>
-            <%= formulario.submit 'Crear Categoria' %>
+            
+            <%= formulario.submit 'Crear Categoria', class:"btn btn-primary" %>
 </div>
 <% end %>
