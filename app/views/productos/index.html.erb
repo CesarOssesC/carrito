@@ -1,41 +1,66 @@
-<div class="container">    
-    <h1>Lista de Productos</h1>
+<div class="row mb-5 justify-content-between">    
+    <div class="col-4">
+        <h1>Lista de Productos</h1>
+    </div>
     <div class="col-4 botones-links">
-            <%= link_to nuevo_producto_path, class:"btn btn-primary" do %>
-                <i class="bi bi-plus-circle"></i>
-                Crear Nuevo Producto
-            <% end %>
-            <%= link_to categorias_path, class:"btn btn-primary" do %>
-                <i class="bi bi-card-list"></i>
-                Lista Categorías
+        <%= link_to nuevo_producto_path, class:"btn btn-primary boton-izquierda" do %>
+            <i class="bi bi-plus-circle"></i>
+            Crear Nuevo Producto
+        <% end %>
+        <%= link_to categorias_path, class:"btn btn-primary boton-derecha" do %>
+            <i class="bi bi-card-list"></i>
+            Lista Categorías
+        <% end %>
+    </div>
+</div>
+<div class="row justify-content-between mb-3 filas-lista-categorias">
+    <div class="col-2">
+        <h3>Foto</h3>
+    </div>
+    <div class="col-3">
+        <h3>Nombre</h3>
+    </div>
+    <div class="col-2 text-center">
+        <h3>Cantidad</h3>
+    </div>
+    <div class="col-3 text-center">
+        <h3>Categoría</h3>
+    </div>
+    <div class="col-2 text-center">
+        <h3>Acciones</h3>
+    </div>
+</div>
+<% @lista_productos.each do |producto| %>
+    <div class="row my-3 justify-content-between border border-2 border-primary rounded-pill shadow rounded hover filas-lista-categorias">
+        <div class="col-2 my-auto foto-lista-productos">
+            <% if producto.imagenes.attached? %>
+                <%= link_to producto_path(producto) do %>
+                    <%= image_tag producto.imagenes.first, style: 'width: 3.5rem', class:"my-1 boton-izquierda" %>
+                <% end %>
+            <% else %>
+                No hay imagenes registradas
             <% end %>
         </div>
-    
-    <br>
-    <br>
-    <table class="table table-hover table-active table-striped table-bordered border-primary">
-        <thead>
-            <tr class="filas-tabla">
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">Imágenes</th>
-                
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <% @lista_productos.each do |lista| %>
-            
-                    <%= render 'productos_registrados', producto_nuevo: lista %>
-
-                <% end %>
-                
-            </tr>
-            
-        </tbody>
-    </table>
-</div>
+        <div class="col-3 my-auto fw-bolder fs-5">
+            <%= link_to producto_path(producto), class:"link-nombre-lista-productos" do %>
+                <%= producto.nombre %>
+            <% end %>
+        </div>
+        <div class="col-2 my-auto fw-bolder fs-5 text-center">
+            <%= producto.cantidad %>
+        </div>
+        <div class="col-3 my-auto fw-bolder fs-5 text-center">
+            <%= producto.categoria.categoria %>
+        </div>
+        <div class="col-2  p-0 mx-0 my-auto">
+            <%= link_to editar_productos_path(producto), class:"btn btn-warning boton-izquierda" do %>
+                <i class="bi bi-pencil-fill"></i>
+                Editar
+            <% end %>
+            <%= link_to producto_path(producto), method: :delete, data: { confirm: '¿Quieres eliminar la producto?' }, class:"btn btn-danger boton-derecha" do %>                   
+                <i class="bi bi-trash-fill"></i>
+                Eliminar                    
+            <% end %>
+        </div>
+    </div>
+<% end %>

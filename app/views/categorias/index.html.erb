@@ -1,41 +1,41 @@
-    <div class="row justify-content-between">
+    <div class="row my-4 justify-content-between">
         
         <div class="col-4">
             <h1 class="titulo-seccion">Lista de Categorias</h1>
         </div>
         
-        <div class="col-4 botones-links">
-            <%= link_to nueva_categoria_path, class:"btn btn-primary" do %>
+        <div class="col-4">
+            <%= link_to nueva_categoria_path, class:"btn btn-primary boton-izquierda" do %>
                 <i class="bi bi-plus-circle"></i>
                 Crear Nueva Categoría
             <% end %>
-            <%= link_to productos_path, class:"btn btn-primary" do %>
+            <%= link_to productos_path, class:"btn btn-primary boton-derecha" do %>
                 <i class="bi bi-card-list"></i>
                 Lista Productos
             <% end %>
         </div>
     </div>
-    <div class="row justify-content-between">
+    <div class="row my-2 justify-content-between">
         <div class="col-4">
             <h3>Nombre</h3>
         </div>
-        <div class="col-4">
+        <div class="col-2 me-4">
             <h3>Acciones</h3>
         </div>
     </div>
     <% @lista_categorias.each do |categoria| %>
-        <div class="row justify-content-between">
-            <div class="col-4"><%= categoria.categoria %></div>
-            <div class="col-4">
-                <%= link_to editar_categorias_path(categoria), class:"btn btn-warning" do %>
+        <div class="row my-3 justify-content-between border border-2 border-primary rounded-pill shadow rounded hover filas-lista-categorias">
+            <div class="col-4 ms-3 my-auto fw-bolder fs-5"><%= categoria.categoria %></div>
+            <div class="col-2  p-0 mx-0 my-1">
+                <%= link_to editar_categorias_path(categoria), class:"btn btn-warning boton-izquierda" do %>
                     <i class="bi bi-pencil-fill"></i>
                     Editar
                 <% end %>
-                <%= link_to categoria_path(categoria), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class:"btn btn-danger" do %>                   
+                <%= link_to categoria_path(categoria), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class:"btn btn-danger boton-derecha" do %>                   
                     <i class="bi bi-trash-fill"></i>
                     Eliminar                    
                 <% end %>
             </div>
         </div>
     <% end %>
-</table>
+

@@ -1,67 +1,75 @@
-<h1>Editar Producto</h1>
-    <%= link_to productos_path, class:"btn btn-primary mb-3 mt-3" do %>
-        <i class="bi bi-card-list"></i>
-        Lista Productos
-    <% end %>
+<div class="row justify-content-between mb-4">
+    <div class="col-4">    
+        <h1>Editar Producto</h1>
+    </div>
+    <div class="col-3 ms-5">
+        <%= link_to productos_path, class:"btn btn-primary rounded-pill" do %>
+            <i class="bi bi-card-list"></i>
+            Volver a Lista Productos
+        <% end %>
+    </div>
+</div>
+
+<div>
     <%= form_with(model: @producto_nuevo) do |formulario| %>
         
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :nombre, class: 'form-label' %>
-                <%= formulario.text_field :nombre, class: 'form-control' %>
+                <%= formulario.text_field :nombre, class: 'form-control rounded-pill' %>
                 <% if @producto_nuevo.errors[:nombre].any? %>
                     <p style="color:red;"> <%= @producto_nuevo.errors[:nombre].first %></p>
                 <% end %>
             </div>
             <br>
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :precio, class: 'form-label' %>
-                <%= formulario.text_field :precio, class: 'form-control' %>
+                <%= formulario.text_field :precio, class: 'form-control rounded-pill' %>
                 <% if @producto_nuevo.errors[:precio].any? %>
                     <p style="color:red;"> <%= @producto_nuevo.errors[:precio].first %></p>
                 <% end %>
             </div>
             <br>
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :cantidad, class: 'form-label' %>
-                <%= formulario.text_field :cantidad, class: 'form-control' %>
+                <%= formulario.text_field :cantidad, class: 'form-control rounded-pill' %>
                 <% if @producto_nuevo.errors[:cantidad].any? %>
                     <p style="color:red;"> <%= @producto_nuevo.errors[:cantidad].first %></p>
                 <% end %>
             </div>
             <br>
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :descripcion, class: 'form-label' %>
-                <%= formulario.text_area :descripcion, class: 'form-control' %>
+                <%= formulario.text_area :descripcion, class: 'form-control rounded-pill' %>
                 <% if @producto_nuevo.errors[:descripcion].any? %>
                     <p style="color:red;"> <%= @producto_nuevo.errors[:descripcion].first %></p>
                 <% end %>
             </div>
             <br>
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :categoria_id, class: 'form-label' %>
                 
-                <%= formulario.select :categoria_id, options_from_collection_for_select(@categorias, :id, :categoria, @producto_nuevo.categoria_id), {}, {class: 'form-select'} %>
+                <%= formulario.select :categoria_id, options_from_collection_for_select(@categorias, :id, :categoria, @producto_nuevo.categoria_id), {}, {class: 'form-select rounded-pill'} %>
                 
                 <% if @producto_nuevo.errors[:categoria_id].any? %>
                     <p style="color:red;"> <%= @producto_nuevo.errors[:categoria_id].first %></p>
                 <% end %>
             </div>
             <br>
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :imagenes %>
-                <%= formulario.file_field :imagenes, multiple: true, class:"form-control", accept: '.jpg, .png, .jpeg', id:"inputGroupFile01" %>
+                <%= formulario.file_field :imagenes, multiple: true, class:"form-control rounded-pill", accept: '.jpg, .png, .jpeg', id:"inputGroupFile01" %>
                 <% if @producto_nuevo.errors[:imagenes].any? %>
                     <p style="color:red;"> <%= @producto_nuevo.errors[:imagenes].first %></p>
                 <% end %>
             </div>
             <% if @producto_nuevo.imagenes.attached? %>
                 <% @producto_nuevo.imagenes.each do |img| %>
-                    <div class="mb-3 col-6">
+                    <div class="mb-3 col-6 fw-bolder">
                         <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div class="d-inline"><%= image_tag img %></div>
+                            <li class="list-group-item rounded-3 d-flex justify-content-between align-items-center">
+                                <div class="d-inline"><%= image_tag img, style:"width: 12.5rem"  %></div>
                                 <span class="badge ">
-                                    <%= link_to eliminar_foto_path(@producto_nuevo, img), method: :delete, data: { confirm: '¿Seguro quieres eliminar la foto?' }, class:"btn btn-danger" do %>                   
+                                    <%= link_to eliminar_foto_path(@producto_nuevo, img), method: :delete, data: { confirm: '¿Seguro quieres eliminar la foto?' }, class:"btn btn-danger rounded-pill" do %>                   
                                         <i class="bi bi-trash-fill"></i>
                                         Eliminar                    
                                     <% end %>
@@ -76,8 +84,9 @@
             
             <br>
             <br>
-            <%= formulario.submit class:"btn btn-primary" do %>
+            <%= formulario.submit class:"btn btn-primary rounded-pill" do %>
 
             <% end %>
+    
+    <% end %>
 </div>
-<% end %>

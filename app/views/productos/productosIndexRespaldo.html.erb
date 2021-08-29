@@ -1,0 +1,42 @@
+<div class="row my-4 justify-content-between">    
+    <div class="col-4">
+        <h1>Lista de Productos</h1>
+    </div>
+    <div class="col-4 botones-links">
+            <%= link_to nuevo_producto_path, class:"btn btn-primary" do %>
+                <i class="bi bi-plus-circle"></i>
+                Crear Nuevo Producto
+            <% end %>
+            <%= link_to categorias_path, class:"btn btn-primary" do %>
+                <i class="bi bi-card-list"></i>
+                Lista Categorías
+            <% end %>
+        </div>
+    
+    <br>
+    <br>
+    <table class="table my-4 table-hover table-active table-striped table-bordered border-primary">
+        <thead>
+            <tr class="filas-tabla">
+                <th scope="col">Foto</th>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <% @lista_productos.each do |lista| %>
+            
+                    <%= render 'productos_registrados', producto_nuevo: lista %>
+
+                <% end %>
+                
+            </tr>
+            
+        </tbody>
+    </table>
+</div>

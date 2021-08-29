@@ -1,11 +1,14 @@
-<div class="row">
-        <div class="col-4 botones-links">
-            <%= link_to productos_path, class:"btn btn-primary" do %>
-                <i class="bi bi-card-list"></i>
-                Lista Productos
-            <% end %>
-        </div>
+<div class="row justify-content-between mb-5">
+    <div class="col-4 fw-bolder fs-3">
+        ID Producto: <%= @producto_nuevo.categoria_id %>
     </div>
+    <div class="col-2 botones-links">
+        <%= link_to productos_path, class:"btn btn-primary rounded-pill" do %>
+            <i class="bi bi-card-list"></i>
+            Lista Productos
+        <% end %>
+    </div>
+</div>
 
 <div class="row justify-content-center">
     <div class="col-lg-6 col-md-10 col-sm-12">
@@ -29,11 +32,11 @@
                 <li class="list-group-item">Disponibles: <%= @producto_nuevo.cantidad %> Unidades</li>
             </ul>
             <div class="card-body">
-                <%= link_to editar_productos_path(@producto_nuevo), class:"btn btn-warning" do %>
+                <%= link_to editar_productos_path(@producto_nuevo), class:"btn btn-warning boton-izquierda" do %>
                     <i class="bi bi-pencil-fill"></i>
                     Editar
                 <% end %>
-                <%= link_to producto_path(@producto_nuevo), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class:"btn btn-danger" do %>                   
+                <%= link_to producto_path(@producto_nuevo), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class:"btn btn-danger boton-derecha" do %>                   
                     <i class="bi bi-trash-fill"></i>
                     Eliminar                    
                 <% end %>

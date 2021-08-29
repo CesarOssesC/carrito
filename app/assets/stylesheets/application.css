@@ -29,4 +29,35 @@
      border-radius: 0.5rem;
  }
 
+ .botones-links {
+     margin-left: 27.5rem;
+ }
+
+ .filas-lista-categorias {
+     width: 97.2%;
+ }
+
+ .boton-izquierda {
+     margin: 0;
+     border-start-start-radius: 1.5rem;
+     border-end-start-radius: 1.5rem;
+ }
+
+ .boton-derecha {
+     margin: 0;
+     border-start-end-radius: 1.5rem;
+     border-end-end-radius: 1.5rem;
+ }
+
+
+
+ .link-nombre-lista-productos {
+     text-decoration: none;
+     color: black;
+ }
  
+ .link-nombre-lista-productos:hover {
+    text-decoration: none;
+    color: #0d6efd;
+ }
+
