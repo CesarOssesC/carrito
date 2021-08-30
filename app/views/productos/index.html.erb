@@ -31,7 +31,7 @@
     </div>
 </div>
 <% @lista_productos.each do |producto| %>
-    <div class="row my-3 justify-content-between border border-2 border-primary rounded-pill shadow rounded hover filas-lista-categorias">
+    <div class="row my-3 justify-content-between border border-2 border-primary rounded-pill shadow rounded hover filas-lista-productos">
         <div class="col-2 my-auto foto-lista-productos">
             <% if producto.imagenes.attached? %>
                 <%= link_to producto_path(producto) do %>
