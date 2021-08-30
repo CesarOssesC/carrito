@@ -1,0 +1,13 @@
+<h1>Productos</h1>
+
+<% @todos_los_productos.each do |producto| %>
+    <div class="card" style="width: 18rem;">
+        <%= image_tag producto.imagenes.first, class: "card-img-top", alt:"..." %>
+        <div class="card-body">
+            <h5 class="card-title"><%= producto.nombre %></h5>
+            <p class="card-text"><%= producto.descripcion %></p>
+            <h5 class="card-title">Precio: $<%= producto.precio %></h5>
+            <%= link_to 'Agregar al carro', agregar_producto_path(producto), class: 'btn btn-primary', method: :post %>
+        </div>
+    </div>
+<% end %>

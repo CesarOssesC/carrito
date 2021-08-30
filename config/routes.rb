@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root 'paginas#inicio'
+  get '/carrito', to: 'paginas#carro'
+
+  #carros
+  post 'carros/:producto_id', to: 'carros#agregar_producto', as: 'agregar_producto'
+  
+  
   get 'productos',            to: 'productos#index',      as: 'productos'
   get 'productos/crear',      to: 'productos#crear',      as: 'nuevo_producto'
   get 'productos/:id',        to: 'productos#mostrar',    as: 'producto'
