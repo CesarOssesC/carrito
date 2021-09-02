@@ -1,13 +1,18 @@
 <h1>Productos</h1>
-
-<% @todos_los_productos.each do |producto| %>
-    <div class="card" style="width: 18rem;">
-        <%= image_tag producto.imagenes.first, class: "card-img-top", alt:"..." %>
-        <div class="card-body">
-            <h5 class="card-title"><%= producto.nombre %></h5>
-            <p class="card-text"><%= producto.descripcion %></p>
-            <h5 class="card-title">Precio: $<%= producto.precio %></h5>
-            <%= link_to 'Agregar al carro', agregar_producto_path(producto), class: 'btn btn-primary', method: :post %>
+<div class="container row">
+    <% @todos_los_productos.each do |producto| %>
+        <div class="col-3">
+            <div class="card my-3 border border-primary border-2 shadow rounded tarjeta-productos">
+                <div class="seccion-imagen-tarjetas border-bottom"> 
+                <%= image_tag producto.imagenes.first, class: "imagen-tarjetas card-img-top ", alt:"..." %>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><%= producto.nombre %></h5>
+                    <p class="card-text descripcion"><%= producto.descripcion %></p>
+                    <h5 class="card-title precio">Precio: $<%= producto.precio %></h5>
+                    <%= link_to 'Agregar al carro', agregar_producto_path(producto), class: 'agregar-al-carro btn btn-primary', method: :post, remote: true %>
+                </div>
+            </div>
         </div>
-    </div>
-<% end %>
+    <% end %>
+</div>

@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   root 'paginas#inicio'
-  get '/carrito', to: 'paginas#carro'
+  get 'carrito',          to: 'paginas#carro',          as: 'carrito'
+
+  
 
   #carros
-  post 'carros/:producto_id', to: 'carros#agregar_producto', as: 'agregar_producto'
+  post 'carros/:producto_id',             to: 'carros#agregar_producto',        as: 'agregar_producto'
+  put 'carros/:producto_id/cantidad',    to: 'carros#aumentar_un_producto',    as: 'aumentar_producto'
+  delete 'carros/:id_producto',           to: 'carros#eliminar_producto',       as:'eliminar_producto'
+  delete 'carros/:id_producto/cantidad',  to: 'carros#disminuir_un_producto',   as:'disminuir_producto'
   
   
   get 'productos',            to: 'productos#index',      as: 'productos'
@@ -28,6 +33,19 @@ Rails.application.routes.draw do
   #delete especial para borrar sólo una foto
   delete 'productos/:id/imagenes/:id_imagen',  to: 'productos#eliminar_foto',  as: 'eliminar_foto'
 
+  get 'destinos',             to: 'destinos#listar',     as: 'destinos'
+  get 'destinos/crear',       to: 'destinos#crear',      as: 'nuevo_destino'
+  get 'destinos/:id',         to: 'destinos#mostrar',    as: 'destino'
+  get 'destinos/:id/editar',  to: 'destinos#editar',     as: 'editar_destinos'
+
+  post 'destinos/guardar',    to: 'destinos#guardar'
+  put 'destinos/:id',         to: 'destinos#actualizar'
+  patch 'destinos/:id',       to: 'destinos#actualizar'
+  delete 'destinos/:id',      to: 'destinos#eliminar'
 
 
+  get 'pedidos/crear',        to: 'pedidos#crear',      as: 'nuevo_pedido'
+  post 'pedidos',             to: 'pedidos#guardar',    as: 'crear_pedido_cliente'
+
+  get 'pedidos',              to: 'pedidos#pagar',      as: 'pagar'
 end

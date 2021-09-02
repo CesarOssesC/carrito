@@ -14,6 +14,11 @@
  *= require_self
  */
 
+
+ body {
+     background-color: rgb(235, 235, 235);
+ }
+
  .contenedor {
      position: relative;
      margin-top: 2rem;
@@ -62,3 +67,39 @@
  }
 
  
+
+ .seccion-imagen-tarjetas {
+    
+    height: 18rem;
+    
+    
+ }
+
+ .imagen-tarjetas{
+     position: relative;
+     width: 98%;
+     height: 98%;
+     padding: 0;
+     vertical-align: top;
+     margin-left: 0.2rem;
+     object-fit: scale-down;
+ }
+
+ .card-body {
+     display: flex;
+     flex-direction: column;
+     position: relative;
+     height: 15rem;
+
+ }
+
+ .precio {
+     position: relative;
+     margin-top: auto;
+ }
+
+ .descripcion {
+    margin-top: auto;
+    
+    
+ }

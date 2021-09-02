@@ -1,0 +1,62 @@
+<div class="row justify-content-between mb-4">
+    <div class="col-4">
+        <h1>Formulario Pedido</h1>
+    </div>
+    <div class="col-3">
+        <%= link_to carrito_path, class:"btn btn-primary rounded-pill" do %>
+            <i class="bi bi-card-list"></i>
+            Volver al Carrito
+        <% end %>
+    </div>
+</div>
+<div>
+    <%= form_with(model: @datos_envio, url:crear_pedido_cliente_path) do |formulario| %>
+        
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :nombre, class: 'form-label' %>
+                <%= formulario.text_field :nombre, class: 'form-control rounded-pill' %>
+                <% if @datos_envio.errors[:nombre].any? %>
+                    <p style="color:red;"> <%= @datos_envio.errors[:nombre].first %></p>
+                <% end %>
+            </div>
+            <br>
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :correo, class: 'form-label' %>
+                <%= formulario.text_field :correo, class: 'form-control rounded-pill' %>
+                <% if @datos_envio.errors[:correo].any? %>
+                    <p style="color:red;"> <%= @datos_envio.errors[:correo].first %></p>
+                <% end %>
+            </div>
+            <br>
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :direccion, class: 'form-label' %>
+                <%= formulario.text_field :direccion, class: 'form-control rounded-pill' %>
+                <% if @datos_envio.errors[:direccion].any? %>
+                    <p style="color:red;"> <%= @datos_envio.errors[:direccion].first %></p>
+                <% end %>
+            </div>
+            <br>
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :telefono, class: 'form-label' %>
+                <%= formulario.text_field :telefono, class: 'form-control rounded-pill' %>
+                <% if @datos_envio.errors[:telefono].any? %>
+                    <p style="color:red;"> <%= @datos_envio.errors[:telefono].first %></p>
+                <% end %>
+            </div>
+            <br>
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :destino_id, class: 'form-label' %>
+                
+                <%= formulario.select :destino_id, options_from_collection_for_select(@destinos, :id, :nombre), {include_blank: "Elige una Ciudad..."}, {class: 'form-select rounded-pill'} %>
+                <% if @datos_envio.errors[:destino_id].any? %>
+                    <p style="color:red;"> <%= @datos_envio.errors[:destino_id].first %></p>
+                <% end %>
+                
+            </div>
+            <br>
+            
+            <%= formulario.submit "Realizar Pedido", class:"btn btn-primary rounded-pill"  %>
+
+            
+    <% end %>
+</div>

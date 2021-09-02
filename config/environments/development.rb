@@ -35,7 +35,18 @@ Rails.application.configure do
 
   config.active_storage.replace_on_assign_to_many = false
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: Rails.application.credentials.correo[:direccion],
+    password: Rails.application.credentials.correo[:password],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   config.action_mailer.perform_caching = false
 

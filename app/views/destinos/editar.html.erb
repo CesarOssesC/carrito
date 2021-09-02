@@ -1,0 +1,35 @@
+<div class="row justify-content-between mb-4">
+    <div class="col-4">    
+        <h1>Editar Destino</h1>
+    </div>
+    <div class="col-3 ms-5">
+        <%= link_to destinos_path, class:"btn btn-primary rounded-pill" do %>
+            <i class="bi bi-card-list"></i>
+            Volver a Lista Destinos
+        <% end %>
+    </div>
+</div>
+<div class="fw-bolder">
+    <%= form_with(model: @destino) do |formulario| %>
+        <div class="mb-3 col-6">
+            <%= formulario.label :nombre, class:"form-label" %>
+            
+            <%= formulario.text_field :nombre, class:"form-control rounded-pill", autofocus: "autofocus" %>
+            <% if @destino.errors[:nombre].any? %>
+                <%= @destino.errors[:nombre].first %>
+            <% end %>
+            
+            
+        </div>
+        <div class="mb-3 col-6 fw-bolder">
+            <%= formulario.label :region_id, class: 'form-label' %>
+            
+            <%= formulario.select :region_id, options_from_collection_for_select(@regiones, :id, :nombre), {include_blank: "Elige una categoría..."}, {class: 'form-select rounded-pill'} %>
+            
+            <% if @destino.errors[:region_id].any? %>
+                <p style="color:red;"> <%= @destino.errors[:region_id].first %></p>
+            <% end %>
+        </div>
+        <%= formulario.submit 'Editar', class:"btn btn-primary rounded-pill" %>
+    <% end %>
+</div>

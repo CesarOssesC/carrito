@@ -4,18 +4,31 @@
             Carrito
         </li>
         <li class="list-group-item">
-            <% @carro.productos.each do |producto_en_carrito| %>
-                <div class="row justify-content-between">
-                    <div class="col-3">
-                        <%= image_tag producto_en_carrito.imagenes.first, class:'w-50' %>
+            <% @carro.carros_contenidos.each do |contenido_carrito| %>
+                <div class="row justify-content-between border-bottom ">
+                    <div class="col-3  border-primary">
+                        <%= image_tag contenido_carrito.producto.imagenes.first, class:'w-50' %>
                     </div>
-                    <div class="col-3">
-                        <h4><%= producto_en_carrito.nombre %></h4>
-                        <p><%= producto_en_carrito.descripcion %></p>
-                        <p><b>Categoria: </b><%= producto_en_carrito.categoria.categoria %></p>
+                    <div class="col-5 ">
+                        <h4><%= contenido_carrito.producto.nombre %></h4>
+                        <p><%= contenido_carrito.producto.descripcion %></p>
+                        <p><b>Categoria: </b><%= contenido_carrito.producto.categoria.categoria %></p>
                     </div>
-                    <div class="col-3 text-end">
-                        $<%= producto_en_carrito.precio %> CLP
+                    <div class="col-2">
+                        <p class="d-inline">Cantidad: </p>
+                        <%= link_to disminuir_producto_path(contenido_carrito.producto), method: :delete, remote: true, class: 'btn btn-secondary p-0 m-0 d-inline' do%>
+                            <i class="bi bi-dash p-0 m-0"></i>
+                        <% end %>
+                        <p class = "d-inline ms-1"><%= contenido_carrito.cantidad %></p>
+                        <%= link_to aumentar_producto_path(contenido_carrito.producto), method: :put, remote: true, class:'btn btn-secondary p-0 m-0 d-inline' do%>
+                            <i class="bi bi-plus "></i>
+                        <% end %>
+                        <%= link_to eliminar_producto_path(contenido_carrito.producto), method: :delete, data: { confirm: '¿Quieres eliminar el producto de tu carrito?' }, class:"btn btn-danger px-1 py-0 ms-2" do %>                   
+                            <i class="bi bi-trash-fill d-inline"></i>                    
+                        <% end %>
+                    </div>
+                    <div class="col-2  text-end">
+                        $<%= contenido_carrito.producto.precio %> CLP
                     </div>
                 </div>
             <% end %>
@@ -26,4 +39,7 @@
             </strong>
         </li>
     </ul>
+    <div class="row">
+        <%= link_to "Continuar con el Pedido", nuevo_pedido_path , class:"btn btn-primary"  %>
+    </div>
 </div>

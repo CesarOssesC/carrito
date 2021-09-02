@@ -3,6 +3,9 @@ ActiveSupport::Inflector.inflections do |inflect|
     inflect.irregular 'categoria', 'categorias'
     inflect.irregular 'producto', 'productos'
     inflect.irregular 'imagen', 'imagenes'
+    inflect.irregular 'region', 'regiones'
+    inflect.irregular 'venta', 'ventas'
+
     #inflect.plural /^(aeo)$/i, '\1s'
 end
 # Add new inflection rules using the following format. Inflections
