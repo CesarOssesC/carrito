@@ -1,0 +1,41 @@
+<div class="row my-4 justify-content-between">
+        
+        <div class="col-4">
+            <h1 class="titulo-seccion">Lista de Pedidos</h1>
+        </div>
+        
+        <div class="col-4">
+            <%= link_to productos_path, class: "btn btn-primary rounded-pill" do %>
+                <i class="bi bi-card-list"></i>
+                Lista Productos
+            <% end %>
+        </div>
+    </div>
+    <div class="row my-2 justify-content-between">
+        <div class="col-1">
+            <h3>Pedidos</h3>
+        </div>
+        <div class="col-3">
+            <h3>Código</h3>
+        </div>
+        <div class="col-3">
+            <h3>Total</h3>
+        </div>
+        <div class="col-2 me-4">
+            <h3>Acciones</h3>
+        </div>
+    </div>
+    <% @lista_pedidos.each do |pedido| %>
+        <div class="row my-3 justify-content-between border border-2 border-primary rounded-pill shadow rounded hover filas-lista-pedidos">
+            <div class="col-1 ms-3 my-auto fw-bolder fs-5"><%= pedido.id %></div>
+            <div class="col-3 ms-3 my-auto fw-bolder fs-5"><%= pedido.codigo %></div>
+            <div class="col-3 ms-3 my-auto fw-bolder fs-5"><%= pedido.total %></div>
+            <div class="col-2  p-0 mx-0 my-1">
+                <%= link_to detalles_pedidos_path(pedido), class: "btn btn-warning rounded-pill" do %>
+                    <i class="bi bi-pencil-fill"></i>
+                    Ver Detalles
+                <% end %>
+                
+            </div>
+        </div>
+    <% end %>

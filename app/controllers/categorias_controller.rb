@@ -41,6 +41,8 @@ class CategoriasController < ApplicationController
         redirect_to categorias_path
     end
 
+    
+
     private
 
     def categoria_params

@@ -10,46 +10,46 @@
     </div>
 </div>
 <div>
-    <%= form_with(model: @datos_envio, url:crear_pedido_cliente_path) do |formulario| %>
+    <%= form_with(model: @datos_formulario, url:crear_pedido_cliente_path) do |formulario| %>
         
             <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :nombre, class: 'form-label' %>
                 <%= formulario.text_field :nombre, class: 'form-control rounded-pill' %>
-                <% if @datos_envio.errors[:nombre].any? %>
-                    <p style="color:red;"> <%= @datos_envio.errors[:nombre].first %></p>
+                <% if @datos_formulario.errors[:nombre].any? %>
+                    <p style="color:red;"> <%= @datos_formulario.errors[:nombre].first %></p>
                 <% end %>
             </div>
             <br>
             <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :correo, class: 'form-label' %>
                 <%= formulario.text_field :correo, class: 'form-control rounded-pill' %>
-                <% if @datos_envio.errors[:correo].any? %>
-                    <p style="color:red;"> <%= @datos_envio.errors[:correo].first %></p>
+                <% if @datos_formulario.errors[:correo].any? %>
+                    <p style="color:red;"> <%= @datos_formulario.errors[:correo].first %></p>
                 <% end %>
             </div>
             <br>
             <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :direccion, class: 'form-label' %>
                 <%= formulario.text_field :direccion, class: 'form-control rounded-pill' %>
-                <% if @datos_envio.errors[:direccion].any? %>
-                    <p style="color:red;"> <%= @datos_envio.errors[:direccion].first %></p>
+                <% if @datos_formulario.errors[:direccion].any? %>
+                    <p style="color:red;"> <%= @datos_formulario.errors[:direccion].first %></p>
                 <% end %>
             </div>
             <br>
             <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :telefono, class: 'form-label' %>
                 <%= formulario.text_field :telefono, class: 'form-control rounded-pill' %>
-                <% if @datos_envio.errors[:telefono].any? %>
-                    <p style="color:red;"> <%= @datos_envio.errors[:telefono].first %></p>
+                <% if @datos_formulario.errors[:telefono].any? %>
+                    <p style="color:red;"> <%= @datos_formulario.errors[:telefono].first %></p>
                 <% end %>
             </div>
             <br>
             <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :destino_id, class: 'form-label' %>
                 
-                <%= formulario.select :destino_id, options_from_collection_for_select(@destinos, :id, :nombre), {include_blank: "Elige una Ciudad..."}, {class: 'form-select rounded-pill'} %>
-                <% if @datos_envio.errors[:destino_id].any? %>
-                    <p style="color:red;"> <%= @datos_envio.errors[:destino_id].first %></p>
+                <%= formulario.select :destino_id, options_from_collection_for_select(@destinos, :id, :nombre, @datos_formulario.destino_id), {include_blank: "Elige una Ciudad..."}, {class: 'form-select rounded-pill'} %>
+                <% if @datos_formulario.errors[:destino_id].any? %>
+                    <p style="color:red;"> <%= @datos_formulario.errors[:destino_id].first %></p>
                 <% end %>
                 
             </div>

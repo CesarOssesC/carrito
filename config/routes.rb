@@ -44,8 +44,11 @@ Rails.application.routes.draw do
   delete 'destinos/:id',      to: 'destinos#eliminar'
 
 
-  get 'pedidos/crear',        to: 'pedidos#crear',      as: 'nuevo_pedido'
+  get 'pedidos',                    to: 'pedidos#crear',            as: 'nuevo_pedido'
+  get 'pagar',                      to: 'pedidos#pagar',            as: 'pagar'
+  get 'pedidos/lista_pedidos',      to: 'pedidos#lista_pedidos',    as: 'lista_pedidos'
+  get 'pedidos/detalles_pedidos',   to: 'pedidos#detalles_pedidos', as: 'detalles_pedidos' 
+
   post 'pedidos',             to: 'pedidos#guardar',    as: 'crear_pedido_cliente'
 
-  get 'pedidos',              to: 'pedidos#pagar',      as: 'pagar'
 end
