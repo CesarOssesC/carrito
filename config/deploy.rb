@@ -4,6 +4,9 @@ lock "~> 3.16.0"
 set :application, "carrito"
 set :repo_url, "git@github.com:CesarOssesC/carrito.git"
 
+#para agregar tareas
+load 'lib/caspistrano/tasks/seed.rb'
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -34,6 +37,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
+
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
