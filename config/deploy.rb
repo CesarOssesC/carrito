@@ -5,7 +5,7 @@ set :application, "carrito"
 set :repo_url, "git@github.com:CesarOssesC/carrito.git"
 
 #para agregar tareas
-load 'lib/caspistrano/tasks/seed.rb'
+load 'lib/capistrano/tasks/seed.rb'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
