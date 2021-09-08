@@ -4,8 +4,8 @@ lock "~> 3.16.0"
 set :application, "carrito"
 set :repo_url, "git@github.com:CesarOssesC/carrito.git"
 
-#para agregar tareas
-load 'lib/capistrano/tasks/seed.rb'
+#para agregar tareas a traves de aqui que no es la mejor forma
+#load 'lib/capistrano/tasks/seed.rb'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
