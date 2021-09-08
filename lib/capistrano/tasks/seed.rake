@@ -1,8 +1,14 @@
-
-task :seed do
-  exec("rails db:seed RAILS_ENV=production")
+namespace :deploy do
+  desc "reload the database with seed data"
+  task :seed do
+    on roles(:all) do
+      within current_path do
+        execute :bundle, :exec, "rails", "db:seed", "RAILS_ENV=production"
+      end
+    end
+  end
 end
-after "deploy:migrate", "seed"
 
+after "deploy:migrate", "seed"
 
 
