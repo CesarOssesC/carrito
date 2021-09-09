@@ -7,7 +7,12 @@
             <% @carro.carros_contenidos.each do |contenido_carrito| %>
                 <div class="row justify-content-between border-bottom ">
                     <div class="col-3  border-primary">
-                        <%= image_tag contenido_carrito.producto.imagenes.first, class:'w-50' %>
+                        <% if contenido_carrito.producto.imagenes.attached? %>
+                            <%= image_tag contenido_carrito.producto.imagenes.first, class: "w-50" %>
+                        <% else %>
+                            No hay imagenes registradas
+                        <% end %>
+                        
                     </div>
                     <div class="col-5 ">
                         <h4><%= contenido_carrito.producto.nombre %></h4>

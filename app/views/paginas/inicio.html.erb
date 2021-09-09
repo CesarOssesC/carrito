@@ -4,7 +4,12 @@
         <div class="col-3">
             <div class="card my-3 border border-primary border-2 shadow rounded tarjeta-productos">
                 <div class="seccion-imagen-tarjetas border-bottom"> 
-                <%= image_tag producto.imagenes.first, class: "imagen-tarjetas card-img-top ", alt:"..." %>
+                    <% if producto.imagenes.attached? %>
+                        <%= image_tag producto.imagenes.first, class: "imagen-tarjetas card-img-top ", alt:"..." %>
+                    <% else %>
+                        No hay imagenes registradas
+                    <% end %>
+                    
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><%= producto.nombre %></h5>
