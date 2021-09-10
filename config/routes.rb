@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post 'productos/guardar',    to: 'productos#guardar'
   put 'productos/:id',         to: 'productos#actualizar'
   patch 'productos/:id',       to: 'productos#actualizar'
-  delete 'productos/:id',      to: 'productos#eliminar'  
+  #delete 'productos/:id',      to: 'productos#eliminar'  no lo utilizamos por la razon explicada en el controlador.
 
   get 'categorias',            to: 'categorias#index',      as: 'categorias'
   get 'categorias/crear',      to: 'categorias#crear',      as: 'nueva_categoria'

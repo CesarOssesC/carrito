@@ -4,8 +4,7 @@ class PaginasController < ApplicationController
     
 
     def inicio
-        
-        @todos_los_productos = Producto.select(:id, :nombre, :descripcion, :precio, :cantidad).order(nombre: :asc)
+        @todos_los_productos = Producto.select(:id, :nombre, :descripcion, :precio, :cantidad, :estados_producto_id).order(nombre: :asc).where("estados_producto_id = 1 and cantidad > 0")
     end
     
     def Carro

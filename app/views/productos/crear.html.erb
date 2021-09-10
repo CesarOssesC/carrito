@@ -53,6 +53,10 @@
                     <p style="color:red;"> <%= @producto_nuevo.errors[:categoria_id].first %></p>
                 <% end %>
             </div>
+            <div class="mb-3 form-switch" style="padding-left:0">
+                <%= formulario.label :estados_producto_id, "Estado", class: "form-label fw-bolder" %>
+                <%= formulario.check_box :estados_producto_id, class: "form-check-input checkbox-estado", checked: true, style: "display:block; margin-left:0;" %>
+            </div>
             <br>
             <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :imagenes %>

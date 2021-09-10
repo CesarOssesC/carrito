@@ -1,16 +1,6 @@
-<div class="row mb-5 justify-content-between">    
-    <div class="col-4">
-        <h2>Lista de Productos Activos</h2>
-    </div>
-    <div class="col-4 botones-links">
-        <%= link_to nuevo_producto_path, class:"btn btn-primary boton-izquierda" do %>
-            <i class="bi bi-plus-circle"></i>
-            Crear Nuevo Producto
-        <% end %>
-        <%= link_to categorias_path, class:"btn btn-primary boton-derecha" do %>
-            <i class="bi bi-card-list"></i>
-            Lista Categorías
-        <% end %>
+<div class="row my-5 justify-content-between">    
+    <div class="col-6">
+        <h2>Lista de Productos Inactivos</h2>
     </div>
 </div>
 <div class="row justify-content-between mb-3 filas-lista-categorias">
@@ -30,19 +20,19 @@
         <h3>Acciones</h3>
     </div>
 </div>
-<% @lista_productos.each do |producto| %>
+<% productos.each do |producto| %>
     <div class="row my-3 justify-content-between border border-2 border-primary rounded-pill shadow rounded hover filas-lista-productos">
         <div class="col-2 my-auto foto-lista-productos">
             <% if producto.imagenes.attached? %>
                 <%= link_to producto_path(producto) do %>
-                    <%= image_tag producto.imagenes.first, style: 'width: 3.5rem', class:"my-1 boton-izquierda" %>
+                    <%= image_tag producto.imagenes.first, style: "width: 3.5rem", class: "my-1 boton-izquierda" %>
                 <% end %>
             <% else %>
                 No hay imagenes registradas
             <% end %>
         </div>
         <div class="col-3 my-auto fw-bolder fs-5">
-            <%= link_to producto_path(producto), class:"link-nombre-lista-productos" do %>
+            <%= link_to producto_path(producto), class: "link-nombre-lista-productos" do %>
                 <%= producto.nombre %>
             <% end %>
         </div>
@@ -53,16 +43,14 @@
             <%= producto.categoria.categoria %>
         </div>
         <div class="col-2  p-0 mx-0 my-auto">
-            <%= link_to editar_productos_path(producto), class:"btn btn-warning boton-izquierda" do %>
+            <%= link_to editar_productos_path(producto), class: "btn btn-warning boton-izquierda" do %>
                 <i class="bi bi-pencil-fill"></i>
                 Editar
             <% end %>
-            <%= link_to producto_path(producto), method: :delete, data: { confirm: '¿Quieres eliminar la producto?' }, class:"btn btn-danger boton-derecha" do %>                   
+            <%= link_to producto_path(producto), method: :delete, data: { confirm: "¿Quieres eliminar la producto?" }, class: "btn btn-danger boton-derecha" do %>                   
                 <i class="bi bi-trash-fill"></i>
                 Eliminar                    
             <% end %>
         </div>
     </div>
 <% end %>
-
-<%= render 'tabla_productos', productos: @lista_productos_inactivos %>

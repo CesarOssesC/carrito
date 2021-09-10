@@ -1,5 +1,8 @@
 class Producto < ApplicationRecord
+
+  belongs_to :estados_producto
   belongs_to :categoria
+
   has_many_attached :imagenes
 
   has_many :carros_contenidos

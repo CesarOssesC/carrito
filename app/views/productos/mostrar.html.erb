@@ -23,7 +23,13 @@
             <div class="card-body">
                 <p>
                     Fotos: <%= @producto_nuevo.imagenes.count %>/4
+                    <% if @producto_nuevo.estados_producto.estado.eql? 'activo' %>
+                        <span class="badge rounded-pill bg-success">Activo</span>
+                    <% else %>
+                        <span class="badge rounded-pill bg-secondary">Inactivo</span>
+                    <% end %>
                 </p>
+                
                 <h5 class="card-title"><%= @producto_nuevo.nombre %></h5>
                 <p class="card-text"><%= @producto_nuevo.descripcion %></p>
             </div>
@@ -32,14 +38,11 @@
                 <li class="list-group-item">Disponibles: <%= @producto_nuevo.cantidad %> Unidades</li>
             </ul>
             <div class="card-body">
-                <%= link_to editar_productos_path(@producto_nuevo), class:"btn btn-warning boton-izquierda" do %>
+                <%= link_to editar_productos_path(@producto_nuevo), class:"btn btn-warning rounded-pill" do %>
                     <i class="bi bi-pencil-fill"></i>
                     Editar
                 <% end %>
-                <%= link_to producto_path(@producto_nuevo), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class:"btn btn-danger boton-derecha" do %>                   
-                    <i class="bi bi-trash-fill"></i>
-                    Eliminar                    
-                <% end %>
+                
             </div>
         </div>
     </div>

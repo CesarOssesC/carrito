@@ -103,3 +103,38 @@
     
     
  }
+
+ .checkbox-estado {
+    position: relative;
+    display: inline-block;
+    left: 5rem;
+    
+ }
+
+ .checkbox-estado::before {
+    content:'Inactivo';
+    position: absolute;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    padding: 0 0.5rem;
+    left: -5rem;
+    top: -0.4rem;
+    border-radius: 1rem 1rem;
+    background-color: #0d6efd;
+    color: blanchedalmond;
+ }
+
+ .checkbox-estado::after {
+    content: 'Activo';
+    position: absolute;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    padding: 0 0.5rem;
+    top: -0.4rem;
+    left: calc(100% + 0.5rem);
+    border-radius: 1rem 1rem;
+    background-color: #0d6efd;
+    color: blanchedalmond;
+ }
