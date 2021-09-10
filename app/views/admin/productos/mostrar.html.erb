@@ -3,7 +3,7 @@
         ID Producto: <%= @producto_nuevo.categoria_id %>
     </div>
     <div class="col-2 botones-links">
-        <%= link_to productos_path, class:"btn btn-primary rounded-pill" do %>
+        <%= link_to admin_productos_path, class:"btn btn-primary rounded-pill" do %>
             <i class="bi bi-card-list"></i>
             Lista Productos
         <% end %>
@@ -38,7 +38,7 @@
                 <li class="list-group-item">Disponibles: <%= @producto_nuevo.cantidad %> Unidades</li>
             </ul>
             <div class="card-body">
-                <%= link_to editar_productos_path(@producto_nuevo), class:"btn btn-warning rounded-pill" do %>
+                <%= link_to admin_editar_productos_path(@producto_nuevo), class:"btn btn-warning rounded-pill" do %>
                     <i class="bi bi-pencil-fill"></i>
                     Editar
                 <% end %>

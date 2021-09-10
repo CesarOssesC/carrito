@@ -1,0 +1,53 @@
+<div class="row my-5 justify-content-between">    
+    <div class="col-6">
+        <h2>Lista de Productos Inactivos</h2>
+    </div>
+</div>
+<div class="row justify-content-between mb-3 filas-lista-categorias">
+    <div class="col-2">
+        <h3>Foto</h3>
+    </div>
+    <div class="col-3">
+        <h3>Nombre</h3>
+    </div>
+    <div class="col-2 text-center">
+        <h3>Cantidad</h3>
+    </div>
+    <div class="col-3 text-center">
+        <h3>Categoría</h3>
+    </div>
+    <div class="col-2 text-center">
+        <h3>Acciones</h3>
+    </div>
+</div>
+<% productos.each do |producto| %>
+    <div class="row my-3 justify-content-between border border-2 border-primary rounded-pill shadow rounded hover filas-lista-productos">
+        <div class="col-2 my-auto foto-lista-productos">
+            <% if producto.imagenes.attached? %>
+                <%= link_to admin_producto_path(producto) do %>
+                    <%= image_tag producto.imagenes.first, style: "width: 3.5rem", class: "my-1 boton-izquierda" %>
+                <% end %>
+            <% else %>
+                No hay imagenes registradas
+            <% end %>
+        </div>
+        <div class="col-3 my-auto fw-bolder fs-5">
+            <%= link_to admin_producto_path(producto), class: "link-nombre-lista-productos" do %>
+                <%= producto.nombre %>
+            <% end %>
+        </div>
+        <div class="col-2 my-auto fw-bolder fs-5 text-center">
+            <%= producto.cantidad %>
+        </div>
+        <div class="col-3 my-auto fw-bolder fs-5 text-center">
+            <%= producto.categoria.categoria %>
+        </div>
+        <div class="col-1  p-0 mx-0 my-auto">
+            <%= link_to admin_editar_productos_path(producto), class: "btn btn-warning rounded-pill" do %>
+                <i class="bi bi-pencil-fill"></i>
+                Editar
+            <% end %>
+            
+        </div>
+    </div>
+<% end %>

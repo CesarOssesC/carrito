@@ -8,20 +8,20 @@
     </td>
     <th scope="row" width="5%" ><%= producto_nuevo.id %></th>
     
-        <td><%= link_to producto_nuevo.nombre, producto_path(producto_nuevo), style:"color: black; text-decoration: none; " %></td>
+        <td><%= link_to producto_nuevo.nombre, admin_producto_path(producto_nuevo), style:"color: black; text-decoration: none; " %></td>
         <td><%= producto_nuevo.precio %></td>
         
         <td><%= producto_nuevo.cantidad %></td>
         <td><%= producto_nuevo.categoria.categoria %></td>
         <td>
             <div class="d-inline">
-                <%= link_to editar_productos_path(producto_nuevo), class:"btn btn-warning" do %>
+                <%= link_to admin_editar_productos_path(producto_nuevo), class:"btn btn-warning" do %>
                     <i class="bi bi-pencil-fill"></i>
                     Editar
                 <% end %>
             </div>
             <div class="d-inline">
-                <%= link_to producto_path(producto_nuevo), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class:"btn btn-danger" do %>                   
+                <%= link_to admin_producto_path(producto_nuevo), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class:"btn btn-danger" do %>                   
                     <i class="bi bi-trash-fill"></i>
                     Eliminar                    
                 <% end %>

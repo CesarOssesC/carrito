@@ -3,14 +3,14 @@
         <h1>Crear Nueva Categoría</h1>
     </div>
     <div class="col-3 ms-5">
-        <%= link_to categorias_path, class:"btn btn-primary rounded-pill" do %>
+        <%= link_to admin_categorias_path, class:"btn btn-primary rounded-pill" do %>
             <i class="bi bi-card-list"></i>
             Volver a Lista Categorías
         <% end %>
     </div>
 </div>
 <div class="fw-bolder" >    
-    <%= form_with(model: @categoria_nueva, url: '/categorias/guardar') do |formulario| %>
+    <%= form_with(model: @categoria_nueva, url: '/admin/categorias/guardar') do |formulario| %>
         <% if @categoria_nueva.errors.any? %>
             <% @categoria_nueva.errors.each do |error| %>
                 <p style="color:red;"> <%= error.full_message %></p>

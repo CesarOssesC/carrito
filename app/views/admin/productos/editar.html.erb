@@ -1,16 +1,17 @@
 <div class="row justify-content-between mb-4">
-    <div class="col-4">
-        <h1>Crear Nuevo Producto</h1>
+    <div class="col-4">    
+        <h1>Editar Producto</h1>
     </div>
-    <div class="col-3">
-        <%= link_to productos_path, class:"btn btn-primary rounded-pill" do %>
+    <div class="col-3 ms-5">
+        <%= link_to admin_productos_path, class:"btn btn-primary rounded-pill" do %>
             <i class="bi bi-card-list"></i>
             Volver a Lista Productos
         <% end %>
     </div>
 </div>
+
 <div>
-    <%= form_with(model: @producto_nuevo, url: '/productos/guardar') do |formulario| %>
+    <%= form_with(model: [:admin, @producto_nuevo]) do |formulario| %>
         
             <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :nombre, class: 'form-label' %>
@@ -47,15 +48,22 @@
             <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :categoria_id, class: 'form-label' %>
                 
-                <%= formulario.select :categoria_id, options_from_collection_for_select(@categorias, :id, :categoria), {include_blank: "Elige una categoría..."}, {class: 'form-select rounded-pill'} %>
+                <%= formulario.select :categoria_id, options_from_collection_for_select(@categorias, :id, :categoria, @producto_nuevo.categoria_id), {}, {class: 'form-select rounded-pill'} %>
                 
                 <% if @producto_nuevo.errors[:categoria_id].any? %>
                     <p style="color:red;"> <%= @producto_nuevo.errors[:categoria_id].first %></p>
                 <% end %>
             </div>
             <div class="mb-3 form-switch" style="padding-left:0">
-                <%= formulario.label :estados_producto_id, "Estado", class: "form-label fw-bolder" %>
-                <%= formulario.check_box :estados_producto_id, class: "form-check-input checkbox-estado", checked: true, style: "display:block; margin-left:0;" %>
+                <%= formulario.label :estados_producto_id, 'Estado', class: "form-label fw-bolder" %>
+                <% if @producto_nuevo.estados_producto.eql? 'activo' %>
+                    
+                    <%= formulario.check_box :estados_producto_id, class: "form-check-input checkbox-estado", checked: true, style: 'display:block; margin-left:0;' %>
+                <% else %>
+                    <%= formulario.check_box :estados_producto_id, class: "form-check-input checkbox-estado", style: 'display:block; margin-left:0;' %>
+                <% end %>
+                
+                
             </div>
             <br>
             <div class="mb-3 col-6 fw-bolder">
@@ -65,10 +73,33 @@
                     <p style="color:red;"> <%= @producto_nuevo.errors[:imagenes].first %></p>
                 <% end %>
             </div>
-            <br>
+            <% if @producto_nuevo.imagenes.attached? %>
+                <% @producto_nuevo.imagenes.each do |img| %>
+                    <% if img.id %>
+                        <div class="mb-3 col-6 fw-bolder">
+                            <ul class="list-group">
+                                <li class="list-group-item rounded-3 d-flex justify-content-between align-items-center">
+                                    <div class="d-inline"><%= image_tag img, style:"width: 12.5rem"  %></div>
+                                    <span class="badge ">
+                                        <%= link_to admin_eliminar_foto_path(@producto_nuevo, img), method: :delete, data: { confirm: '¿Seguro quieres eliminar la foto?' }, class:"btn btn-danger rounded-pill" do %>                   
+                                            <i class="bi bi-trash-fill"></i>
+                                            Eliminar                    
+                                        <% end %>
+                                    </span>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    <% end %>
+                <% end %>
+            <% end %>
+        
             
+            <br>
+            <br>
             <%= formulario.submit class:"btn btn-primary rounded-pill" do %>
 
             <% end %>
+    
     <% end %>
 </div>

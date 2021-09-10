@@ -1,4 +1,4 @@
-class CategoriasController < ApplicationController
+class Admin::CategoriasController < Admin::AdminController
 
     before_action :asignar_categoria, only: [:mostrar, :editar, :actualizar, :eliminar]
 
@@ -38,7 +38,7 @@ class CategoriasController < ApplicationController
 
     def eliminar
         @categoria_nueva.destroy
-        redirect_to categorias_path
+        redirect_to action: :index
     end
 
     

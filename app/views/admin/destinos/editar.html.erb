@@ -3,14 +3,14 @@
         <h1>Editar Destino</h1>
     </div>
     <div class="col-3 ms-5">
-        <%= link_to destinos_path, class:"btn btn-primary rounded-pill" do %>
+        <%= link_to admin_destinos_path, class:"btn btn-primary rounded-pill" do %>
             <i class="bi bi-card-list"></i>
             Volver a Lista Destinos
         <% end %>
     </div>
 </div>
 <div class="fw-bolder">
-    <%= form_with(model: @destino) do |formulario| %>
+    <%= form_with(model: [:admin, @destino]) do |formulario| %>
         <div class="mb-3 col-6">
             <%= formulario.label :nombre, class:"form-label" %>
             

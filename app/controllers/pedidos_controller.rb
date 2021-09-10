@@ -46,7 +46,7 @@ class PedidosController < ApplicationController
     end
     
     def lista_pedidos
-        @lista_pedidos = Pedido.select(:id, :codigo, :total)
+        @lista_pedidos = Pedido.select(:created_at, :codigo, :total).order(created_at: :desc)
     end
 
     def detalles_pedidos
