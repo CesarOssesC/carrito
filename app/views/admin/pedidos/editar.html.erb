@@ -1,0 +1,12 @@
+<div class="row justify-content-between mb-4">
+    <div class="col-4">
+        <h1>Editar Pedido</h1>
+    </div>
+    <div class="col-3">
+        <%= link_to admin_pedido_path, class: "btn btn-primary rounded-pill" do %>
+            <i class="bi bi-card-list"></i>
+            Volver al Pedido
+        <% end %>
+    </div>
+</div>
+<%= render "formulario_datos_cliente", datos_pedido: @datos_pedido %>

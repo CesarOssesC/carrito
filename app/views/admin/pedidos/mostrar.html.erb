@@ -1,0 +1,60 @@
+<div class="row justify-content-between">    
+    <div class="col-4 alert alert-primary rounded-pill" role="alert">
+        <h3>
+            Estado Pedido: <%= @pedido.estados_pedido.estado %>
+        </h3>
+    </div>
+    <div class="col-2">
+        <%= link_to admin_pedidos_path, class: "btn btn-primary rounded-pill" do %>
+            <i class="bi bi-card-list"></i>
+            Lista Pedidos
+        <% end %>
+    </div>
+</div>
+<div class="border border-3 ">   
+    <div class="row justify-content-between">
+        <div class="col-1 ms-3 ">
+            <h4>Código</h4>
+        </div>
+        <div class="col-3 ms-4">
+            <h4>Datos Cliente</h4>
+        </div>
+        <div class="col-4 ms-4">
+            <h4>Detalle Compra</h4>
+        </div>
+        <div class="col-1 ">
+            <h4>Total</h4>
+        </div>
+        <div class="col-2 ms-4">
+            <h4>Acciones</h4>
+        </div>
+    </div>
+    <div class="row my-2 justify-content-between">
+        <div class="col-1 ms-3 ">
+            <h5><%= @pedido.codigo %></h5>
+        </div>
+        <div class="col-3 ms-4">
+            <p><%= @pedido.datos_envio.nombre %></p>
+            <p><%= @pedido.datos_envio.correo %></p>
+            <p><%= @pedido.datos_envio.telefono %></p>
+            <p><%= @pedido.datos_envio.direccion %></p>
+        </div>
+        <div class="col-4 ms-4">
+            <% @pedido.detalles_pedidos.each do |detalle| %>
+                <p>Producto: <%= detalle.producto.nombre %></p>
+                <p>Precio Unitario: <%= detalle.producto.precio %></p>
+                <p>Cantidad: <%= detalle.cantidad %></p>
+            <% end %>
+        </div>
+        <div class="col-1">
+            <h5>$<%= @pedido.total %></h5>
+        </div>
+        <div class="col-2 ms-4">
+            <%= link_to admin_editar_pedido_path(@pedido), class: "btn btn-warning rounded-pill" do %>
+                    <i class="bi bi-pencil-fill"></i>
+                    Editar
+                <% end %>
+        </div>
+    </div>              
+    
+</div>            

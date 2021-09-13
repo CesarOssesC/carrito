@@ -1,10 +1,14 @@
 <div class="row my-4 justify-content-between">
-        
+        <% if flash[:errors] %>
+            <div class="alert alert-warning" role="alert">
+            <%= flash[:errors] %>
+            </div>
+        <% end %>
         <div class="col-4">
             <h1 class="titulo-seccion">Lista de Pedidos</h1>
         </div>
         
-        <div class="col-4">
+        <div class="col-2">
             <%= link_to admin_productos_path, class: "btn btn-primary rounded-pill" do %>
                 <i class="bi bi-card-list"></i>
                 Lista Productos
@@ -31,7 +35,7 @@
             <div class="col-3 ms-3 my-auto fw-normal fs-5"><%= pedido.total %></div>
             <div class="col-3 ms-3 my-auto fw-normal fs-5"><%= pedido.created_at.strftime("%d/%m/%Y") %></div>
             <div class="col-2  p-0 mx-0 my-1">
-                <%= link_to detalles_pedidos_path(pedido), class: "btn btn-warning rounded-pill" do %>
+                <%= link_to admin_pedido_path(pedido), class: "btn btn-primary rounded-pill" do %>
                     <i class="bi bi-pencil-fill"></i>
                     Ver Detalles
                 <% end %>

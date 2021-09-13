@@ -1,0 +1,52 @@
+
+<div>
+    <%= form_with(model: datos_pedido) do |formulario| %>
+        
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :nombre, class: "form-label" %>
+                <%= formulario.text_field :nombre, class: "form-control rounded-pill" %>
+                <% if @pedido.errors[:nombre].any? %>
+                    <p style="color:red;"> <%= @pedido.errors[:nombre].first %></p>
+                <% end %>
+            </div>
+            <br>
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :correo, class: "form-label" %>
+                <%= formulario.text_field :correo, class: "form-control rounded-pill" %>
+                <% if @pedido.errors[:correo].any? %>
+                    <p style="color:red;"> <%= @pedido.errors[:correo].first %></p>
+                <% end %>
+            </div>
+            <br>
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :direccion, class: "form-label" %>
+                <%= formulario.text_field :direccion, class: "form-control rounded-pill" %>
+                <% if @pedido.errors[:direccion].any? %>
+                    <p style="color:red;"> <%= @pedido.errors[:direccion].first %></p>
+                <% end %>
+            </div>
+            <br>
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :telefono, class: "form-label" %>
+                <%= formulario.text_field :telefono, class: "form-control rounded-pill" %>
+                <% if @pedido.errors[:telefono].any? %>
+                    <p style="color:red;"> <%= @pedido.errors[:telefono].first %></p>
+                <% end %>
+            </div>
+            <br>
+            <div class="mb-3 col-6 fw-bolder">
+                <%= formulario.label :destino_id, class: "form-label" %>
+                
+                <%= formulario.select :destino_id, options_from_collection_for_select(@destinos, :id, :nombre, datos_pedido.destino_id), { include_blank: "Elige una Ciudad..." }, { class: "form-select rounded-pill" } %>
+                <% if @pedido.errors[:destino_id].any? %>
+                    <p style="color:red;"> <%= @pedido.errors[:destino_id].first %></p>
+                <% end %>
+                
+            </div>
+            <br>
+            
+            <%= formulario.submit "Actualizar Pedido", class: "btn btn-primary rounded-pill" %>
+
+            
+    <% end %>
+</div>
