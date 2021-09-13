@@ -3,9 +3,9 @@ class PedidosController < ApplicationController
     include PedidosHelper
 
     layout 'application', only: [:lista_pedidos, :detalles_pedidos]
-    #en vez de hacer un layout especial para un controlador
-    #podemos llamar a otro usando
-    #layout 'paginas'
+    # en vez de hacer un layout especial para un controlador
+    # podemos llamar a otro usando
+    # layout 'paginas'
 
     before_action :validar_carro
     before_action :validar_productos_carro, only: :crear
@@ -77,12 +77,12 @@ class PedidosController < ApplicationController
     end
 
     def validar_productos_carro
-        if @carro.productos.count == 0
+        if @carro.productos.count.zero?
             redirect_to root_path
         end
     end
 
-    #primera versión del controlador
+    # primera versión del controlador
     # def datos_envio_params
     #     params.require(:pedidos_helper_datos_envio_formulario).permit(:nombre, :direccion, :correo, :telefono)
     # end

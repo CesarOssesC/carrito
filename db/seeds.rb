@@ -8,44 +8,48 @@
 
 #podemos destruir todo antes de guardar nuevamente añadiendo 
 #TiposPago.destroy_all por ejemplo antes del create para que no duplique los datos.
-EstadosProducto.create([
-    {estado: 'activo'},
-    {estado: 'inactivo'},
-])
+if EstadosProducto.count.zero?
+    EstadosProducto.create([
+        {estado: 'activo'},
+        {estado: 'inactivo'},
+    ])
+end
+
+if TiposPago.count.zero?
+    TiposPago.create ([
+        {pago: 'efectivo'},
+        {pago: 'tarjeta'},
+    ])
+end
 
 
-
-TiposPago.create ([
-    {pago: 'efectivo'},
-    {pago: 'tarjeta'},
-])
-
-
-
-EstadosPedido.create ([
-    {estado: 'solicitando'},
-    {estado: 'enviado'},
-    {estado: 'entregado'},
-])
+if EstadosPedido.count.zero?
+    EstadosPedido.create ([
+        {estado: 'solicitando'},
+        {estado: 'enviado'},
+        {estado: 'entregado'},
+    ])
+end
 
 
-
-Region.create ([
-    {nombre: 'Región de Arica y Parinacota.'},
-    {nombre: 'Región de Tarapacá.'},
-    {nombre: 'Región de Antofagasta.'},
-    {nombre: 'Región de Atacama.'},
-    {nombre: 'Región de Coquimbo.'},
-    {nombre: 'Región de Valparaíso.'},
-    {nombre: 'Región Metropolitana de Santiago.'},
-    {nombre: 'Región del Libertador General Bernardo O’Higgins.'},
-    {nombre: 'Región del Maule.'},
-    {nombre: 'Región del Ñuble.'},
-    {nombre: 'Región del Biobío.'},
-    {nombre: 'Región de La Araucanía.'},
-    {nombre: 'Región de Los Ríos.'},
-    {nombre: 'Región de Los Lagos.'},
-    {nombre: 'Región de Aysén del General Carlos Ibáñez del Campo.'},
-    {nombre: 'Región de Magallanes y la Antártica Chilena.'},
-])
+if Region.count.zero?    
+    Region.create ([
+        {nombre: 'Región de Arica y Parinacota.'},
+        {nombre: 'Región de Tarapacá.'},
+        {nombre: 'Región de Antofagasta.'},
+        {nombre: 'Región de Atacama.'},
+        {nombre: 'Región de Coquimbo.'},
+        {nombre: 'Región de Valparaíso.'},
+        {nombre: 'Región Metropolitana de Santiago.'},
+        {nombre: 'Región del Libertador General Bernardo O’Higgins.'},
+        {nombre: 'Región del Maule.'},
+        {nombre: 'Región del Ñuble.'},
+        {nombre: 'Región del Biobío.'},
+        {nombre: 'Región de La Araucanía.'},
+        {nombre: 'Región de Los Ríos.'},
+        {nombre: 'Región de Los Lagos.'},
+        {nombre: 'Región de Aysén del General Carlos Ibáñez del Campo.'},
+        {nombre: 'Región de Magallanes y la Antártica Chilena.'},
+    ])
+end
 

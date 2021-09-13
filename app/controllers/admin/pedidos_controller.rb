@@ -9,15 +9,15 @@ class Admin::PedidosController < Admin::AdminController
     end
 
     def mostrar
-        #TODO mostar un pedido con todos los productos
+        # TODO mostar un pedido con todos los productos
     end
 
     def crear
-        #TODO mostrar formulario para crear pedido
+        # TODO mostrar formulario para crear pedido
     end
 
     def editar
-        #TODO editar pediddo existente
+        # TODO editar pediddo existente
         @datos_pedido = PedidosFormulario.new
         @datos_pedido.id = @pedido.id
         @datos_pedido.nombre = @pedido.datos_envio.nombre
