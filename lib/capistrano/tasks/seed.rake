@@ -9,6 +9,6 @@ namespace :deploy do
   end
 end
 
-after "deploy:migrate", "seed"
+after "deploy:symlink:release", "seed"
 
 
