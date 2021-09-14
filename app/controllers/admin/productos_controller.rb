@@ -6,7 +6,7 @@ class Admin::ProductosController < Admin::AdminController
 
     def index
         @lista_productos = Producto.includes(:categoria).select(:id, :nombre, :precio, :descripcion, :cantidad, :categoria_id, :estados_producto_id).order(id: :asc).where("estados_producto_id = 1")
-        @lista_productos_inactivos = Producto.includes(:categoria).select(:id, :nombre, :precio, :descripcion, :cantidad, :categoria_id, :estados_producto_id).order(id: :asc).where("estados_producto_id = 2 OR estados_productos_id = null")
+        @lista_productos_inactivos = Producto.includes(:categoria).select(:id, :nombre, :precio, :descripcion, :cantidad, :categoria_id, :estados_producto_id).order(id: :asc).where("estados_producto_id = 2 OR estados_producto_id = null")
     end
 
     def mostrar
