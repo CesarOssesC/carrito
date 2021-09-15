@@ -1,0 +1,49 @@
+<h1 class="my-3">Productos</h1>
+<div class="card " >
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            Carrito
+        </li>
+        <li class="list-group-item">
+            <% productos.each do |detalle| %>
+                <div class="row justify-content-between border-bottom ">
+                    <div class="col-3  border-primary">
+                        <% if detalle.producto.imagenes.attached? %>
+                            <%= image_tag detalle.producto.imagenes.first, class: "w-50" %>
+                        <% else %>
+                            No hay imagenes registradas
+                        <% end %>
+                        
+                    </div>
+                    <div class="col-5 ">
+                        <h4><%= detalle.producto.nombre %></h4>
+                        <p><%= detalle.producto.descripcion %></p>
+                        <p><b>Categoria: </b><%= detalle.producto.categoria.categoria %></p>
+                    </div>
+                    <div class="col-2">
+                        <p class="d-inline">Cantidad: </p>
+                        <%= link_to admin_disminuir_producto_path(detalle.pedido_id, detalle.producto_id), method: :delete, remote: true, class: "btn btn-secondary p-0 m-0 d-inline" do %>
+                            <i class="bi bi-dash p-0 m-0"></i>
+                        <% end %>
+                        <p class = "d-inline ms-1"><%= detalle.cantidad %></p>
+                        <%= link_to admin_aumentar_producto_path(detalle.pedido_id, detalle.producto_id), method: :put, remote: true, class: "btn btn-secondary p-0 m-0 d-inline" do %>
+                            <i class="bi bi-plus "></i>
+                        <% end %>
+                        <%= link_to admin_eliminar_producto_path(detalle.pedido_id, detalle.producto_id), method: :delete, remote: true, data: { confirm: "¿Quieres eliminar el producto de tu carrito?" }, class: "btn btn-danger px-1 py-0 ms-2" do %>                   
+                            <i class="bi bi-trash-fill d-inline"></i>                    
+                        <% end %>
+                    </div>
+                    <div class="col-2  text-end">
+                        $<%= detalle.producto.precio * detalle.cantidad %> CLP
+                    </div>
+                </div>
+            <% end %>
+            <li class="list-group-item text-end">
+            <strong>
+                Subtotal: <%= pedido.total %>
+            </strong>
+        </li>
+        </li>
+    </ul>
+    
+</div>

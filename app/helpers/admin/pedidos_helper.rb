@@ -2,16 +2,19 @@ module Admin::PedidosHelper
     class PedidosFormulario
       
       include ActiveModel::Model
-      attr_accessor(:id, :nombre, :correo, :direccion, :telefono, :destino_id)
+      attr_accessor(:id, :nombre, :correo, :direccion, :telefono, :destino_id, :estado_id)
       validates(:nombre, presence: true)
       validates(:direccion, presence: true)
       validates(:correo, presence: true)
       validates(:telefono, presence: true)
       validates(:destino_id, presence: true)
+      
 
       def persisted?
         id != nil
       end
+
+      
     end
 
     # def crear_datos_envio(pedido)

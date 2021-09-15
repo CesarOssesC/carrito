@@ -69,6 +69,12 @@ Rails.application.routes.draw do
     put "pedidos/:id",                                    to: "pedidos#actualizar"     
     patch "pedidos/:id",                                  to: "pedidos#actualizar",     as: "pedidos_helper_pedidos_formulario"
     delete "pedidos/:id",                                 to: "pedidos#eliminar"
+
+    # rutas para crear un producto ded un pedido
+    put "pedidos/:id/productos/:id_producto",                 to: "pedidos#aumentar_cantidad_producto",   as: "aumentar_producto"
+    delete "pedidos/:id/productos/:id_producto",              to: "pedidos#disminuir_cantidad_producto",   as: "disminuir_producto"
+    delete "pedidos/:id/productos/:id_producto/eliminar",     to: "pedidos#eliminar_producto", as: "eliminar_producto"
+    
   end
 
 end

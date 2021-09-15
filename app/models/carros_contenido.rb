@@ -5,13 +5,12 @@ class CarrosContenido < ApplicationRecord
 
   belongs_to :carro
   belongs_to :producto
-end
-
-
-
-private
-
-def actualizar_total
+  
+  
+  
+  private
+  
+  def actualizar_total
     
     carro = self.carro
     subtotal = 0
@@ -22,4 +21,6 @@ def actualizar_total
     
     # self.carro.total = self.carro.productos.map(&:precio).sum
     carro.save
+  end
+
 end

@@ -1,6 +1,6 @@
 <div class="row justify-content-between mb-4">
-    <div class="col-4">
-        <h1>Editar Pedido</h1>
+    <div class="col-5">
+        <h1>Editar Pedido: <%= @pedido.codigo %></h1>
     </div>
     <div class="col-3">
         <%= link_to admin_pedido_path, class: "btn btn-primary rounded-pill" do %>
@@ -9,4 +9,6 @@
         <% end %>
     </div>
 </div>
-<%= render "formulario_datos_cliente", datos_pedido: @datos_pedido %>
+<%= render "formulario_datos_cliente", datos_pedido: @datos_pedido, destinos: @destinos, estados_pedidos: @estados_pedidos %>
+<br>
+<%= render "edicion_productos_cliente", productos: @productos, pedido: @pedido %>
