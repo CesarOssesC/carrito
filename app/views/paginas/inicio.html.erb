@@ -1,7 +1,7 @@
 <h1>Productos</h1>
 <div class="container row">
     <% @todos_los_productos.each do |producto| %>
-        <div class="col-3">
+        <div class="col-lg-3 col-sm-10">
             <div class="card my-3 border border-primary border-2 shadow rounded tarjeta-productos">
                 <div class="seccion-imagen-tarjetas border-bottom"> 
                     <% if producto.imagenes.attached? %>

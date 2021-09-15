@@ -2,7 +2,7 @@ class Admin::PedidosController < Admin::AdminController
     
     include Admin::PedidosHelper
 
-    before_action :asignar_pedido, only: [:mostrar, :editar, :actualizar, :aumentar_cantidad_producto, :disminuir_cantidad_producto, :eliminar_producto]
+    before_action :asignar_pedido, only: [:mostrar, :editar, :actualizar, :aumentar_cantidad_producto, :disminuir_cantidad_producto, :eliminar_producto, :agregar_producto, :guardar_producto]
 
     def listar
         @lista_pedidos = Pedido.select(:id, :codigo, :total, :created_at).order(created_at: :desc)
@@ -89,6 +89,25 @@ class Admin::PedidosController < Admin::AdminController
         detalle_pedido = @pedido.detalles_pedidos.find_by(producto_id: params[:id_producto])
         detalle_pedido.destroy
 
+        redirect_to action: :editar
+    end
+
+    def agregar_producto
+        @todos_los_productos = Producto.select(:id, :nombre, :descripcion, :precio, :cantidad, :estados_producto_id).order(nombre: :asc).where("estados_producto_id = 1 and cantidad > 0")
+    end
+
+    def guardar_producto
+        detalle_pedido = @pedido.detalles_pedidos.find_by(producto_id: params[:id_producto])
+        if detalle_pedido
+            detalle_pedido.cantidad += 1
+        else
+        detalle_pedido = DetallesPedido.new(
+            pedido: @pedido,
+            producto_id: params[:id_producto],
+            cantidad: 1,
+        )
+        end
+        detalle_pedido.save
         redirect_to action: :editar
     end
 
