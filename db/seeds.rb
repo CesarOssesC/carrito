@@ -25,9 +25,10 @@ TiposPago.create ([
 
 
 EstadosPedido.create ([
-    {estado: 'solicitando'},
-    {estado: 'enviado'},
-    {estado: 'entregado'},
+    {estado: 'Solicitado'},
+    {estado: 'Enviado'},
+    {estado: 'Entregado'},
+    {estado: 'Cancelado'}
 ])
 
 
@@ -50,6 +51,11 @@ Region.create ([
     {nombre: 'Región de Los Lagos.'},
     {nombre: 'Región de Aysén del General Carlos Ibáñez del Campo.'},
     {nombre: 'Región de Magallanes y la Antártica Chilena.'},
+    {nombre: 'Sin Región'}
 ])
+
+Destino.create(
+    {nombre: 'Sin Destino', region: Region.find_by(nombre: 'Sin Región')}
+)
 
 

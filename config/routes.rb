@@ -59,13 +59,13 @@ Rails.application.routes.draw do
     patch "destinos/:id",                                 to: "destinos#actualizar"
     delete "destinos/:id",                                to: "destinos#eliminar"
 
-    get "pedidos",                                        to: "pedidos#listar",         as: "pedidos"
-    get "pedidos",                                        to: "pedidos#crear",          as: "nuevo_pedido"
+    get "/",                                              to: "pedidos#listar",         as: "pedidos"
+    #get "pedidos",                                        to: "pedidos#crear",          as: "nuevo_pedido"
     get "pedidos/:id",                                    to: "pedidos#mostrar",        as: "pedido"
     get "pedidos/:id/editar",                             to: "pedidos#editar",         as: "editar_pedido"
     get "pagar",                                          to: "pedidos#pagar",          as: "pagar"
 
-    post "pedidos",                                       to: "pedidos#guardar",        as: "pedidos_helper_pedidos_formularios"
+    post "pedidos",                                       to: "pedidos#crear",        as: "pedidos_helper_pedidos_formularios"
     put "pedidos/:id",                                    to: "pedidos#actualizar"     
     patch "pedidos/:id",                                  to: "pedidos#actualizar",     as: "pedidos_helper_pedidos_formulario"
     delete "pedidos/:id",                                 to: "pedidos#eliminar"

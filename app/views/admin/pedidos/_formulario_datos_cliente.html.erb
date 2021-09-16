@@ -37,7 +37,7 @@
             <div class="mb-3 col-6 fw-bolder">
                 <%= formulario.label :destino_id, class: "form-label" %>
                 
-                <%= formulario.select :destino_id, options_from_collection_for_select(destinos, :id, :nombre, datos_pedido.destino_id), {}, { class: "form-select rounded-pill" } %>
+                <%= formulario.select :destino_id, options_from_collection_for_select(destinos, :id, :nombre, datos_pedido.destino_id), {include_blank: "Elige una Ciudad..."}, { class: "form-select rounded-pill" } %>
                 <% if datos_pedido.errors[:destino_id].any? %>
                     <p style="color:red;"> <%= datos_pedido.errors[:destino_id].first %></p>
                 <% end %>
@@ -54,7 +54,7 @@
                 
             </div>
             
-            <%= formulario.submit "Actualizar Datos Pedido", class: "btn btn-primary rounded-pill" %>
+            <%= formulario.submit  class: "btn btn-primary rounded-pill" %>
 
             
     <% end %>

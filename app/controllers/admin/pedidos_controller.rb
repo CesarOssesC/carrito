@@ -5,19 +5,31 @@ class Admin::PedidosController < Admin::AdminController
     before_action :asignar_pedido, only: [:mostrar, :editar, :actualizar, :aumentar_cantidad_producto, :disminuir_cantidad_producto, :eliminar_producto, :agregar_producto, :guardar_producto]
 
     def listar
-        @lista_pedidos = Pedido.select(:id, :codigo, :total, :created_at).order(created_at: :desc)
+        @lista_pedidos = Pedido.select(:id, :codigo, :total, :created_at, :estados_pedido_id).order(created_at: :desc)
     end
 
     def mostrar
-        # TODO mostar un pedido con todos los productos
+        
     end
 
     def crear
-        # TODO mostrar formulario para crear pedido
+        @pedido = Pedido.new
+        @pedido.codigo = SecureRandom.hex(4).upcase
+        @pedido.total = 0
+        @pedido.estados_pedido = EstadosPedido.find_by(estado: "Solicitado")
+        @pedido.destino = Destino.find_by(nombre: 'Sin Destino')
+        @pedido.datos_envio = DatosEnvio.create(
+            nombre: 'Ingrese Nombre',
+            telefono: 'Ingrese un teléfono',
+            direccion: 'Ingrese dirección',
+            correo: 'Ingrese un correo',
+        )
+        @pedido.save
+        redirect_to admin_editar_pedido_path(@pedido)
+        
     end
 
     def editar
-        # TODO editar pediddo existente
         @datos_pedido = PedidosFormulario.new
         @datos_pedido.id = @pedido.id
         @datos_pedido.nombre = @pedido.datos_envio.nombre
@@ -32,9 +44,6 @@ class Admin::PedidosController < Admin::AdminController
 
     end
 
-    def guardar
-
-    end
 
     def actualizar
         @datos_pedido = PedidosFormulario.new(params_pedidos)
@@ -62,7 +71,7 @@ class Admin::PedidosController < Admin::AdminController
     end
 
     def eliminar
-        #TODO analizar si vale la pena
+        
     end
 
     def aumentar_cantidad_producto
