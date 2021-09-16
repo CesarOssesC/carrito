@@ -54,8 +54,8 @@ Region.create ([
     {nombre: 'Sin Región'}
 ])
 
-Destino.create(
-    {nombre: 'Sin Destino', region: Region.find_by(nombre: 'Sin Región')}
-)
+# Destino.create(
+#     {nombre: 'Sin Destino', region: Region.find_by(nombre: 'Sin Región')}
+# )
 
 
