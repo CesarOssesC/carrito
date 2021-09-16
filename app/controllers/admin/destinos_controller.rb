@@ -3,7 +3,7 @@ class Admin::DestinosController < Admin::AdminController
     before_action :asignar_destino, only: [:mostrar, :editar, :actualizar, :eliminar]
 
     def listar
-        @destinos = Destino.select(:id, :nombre)
+        @destinos = Destino.select(:id, :nombre).where("nombre <> 'Sin Destino'")
     end
 
     def crear
