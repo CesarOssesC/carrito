@@ -31,7 +31,7 @@ module PedidosHelper
             codigo: SecureRandom.hex(4).upcase, 
             total: total, 
             destino_id: datos_formulario.destino_id,
-            estados_pedido: EstadosPedido.find_by(estado: 'solicitando'), 
+            estados_pedido: EstadosPedido.find_by(estado: 'Solicitado'), 
             datos_envio: datos_envio
         )
     end
