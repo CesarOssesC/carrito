@@ -38,9 +38,9 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp.zoho.com',
     port: 587,
-    domain: 'gmail.com',
+    domain: 'cesarosses.xyz',
     user_name: Rails.application.credentials.correo[:direccion],
     password: Rails.application.credentials.correo[:password],
     authentication: 'plain',
