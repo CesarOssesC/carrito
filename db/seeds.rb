@@ -63,5 +63,4 @@ Region.create ([
 Administrador.create([
     {nombre: 'César Osses', correo: 'cesar.osses@gmail.com', password: Rails.application.credentials.admin[:password1]},
     { nombre: "Coni López", correo: "coni.lopez@gmail.com", password: Rails.application.credentials.admin[:password2]}
-
 ])
