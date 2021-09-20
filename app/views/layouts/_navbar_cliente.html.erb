@@ -19,10 +19,43 @@
               <span class="visually-hidden">unread messages</span>
             </span>
             
-        </a>
+          </a>
         </li>
+        
       </ul>
-      
+      <% if usuario_ha_iniciado_sesion? %>
+        <div class="dropdown" >
+          <button class="btn btn-primary dropdown-toggle px-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= @usuario_actual.nombre %>
+          </button><!-- Opción para mostrar el formulario ⏬ -->
+          <div class="dropdown-menu px-4">
+              <%= link_to "Cerrar sesión", cerrar_sesion_path, class: "btn btn-warning m-auto", method: :delete, data: { confirm: "está seguro de cerrar sesión?" } %>
+          </div>
+        </div>
+
+      <% else %>  
+      <div class="dropdown" >
+        <button class="btn btn-primary dropdown-toggle px-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Iniciar Sesión
+        </button>
+        <%= form_with(url: iniciar_sesion_path, class: 'dropdown-menu p-4') do |formulario| %>
+          <div class="mb-3">
+            <%= formulario.label :correo, class: 'form-label' %>
+            <%= formulario.text_field :correo, class: 'form-control', placeholder: 'correo@ejemplo.com' %>
+          </div>
+          <div class="mb-3">
+            <%= formulario.label :password, class: "form-label" %>
+            <%= formulario.password_field :password, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= formulario.label :recuerdame, class: "form-check-label" %>
+            <%= formulario.check_box :recuerdame, class: "form-check-input" %>
+          </div>
+          <%= formulario.submit "Iniciar Sesión", class: "btn btn-primary" %>
+        <% end %>
+      <% end %>  
+        
+      </div>
     </div>
   </div>
 </nav>

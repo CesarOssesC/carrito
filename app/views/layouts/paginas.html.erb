@@ -17,6 +17,14 @@
   
     <%= render "layouts/navbar_cliente" %>
 
+    <div class="d-flex justify-content-end">
+      <% if flash[:error_sesion] %>
+              <div class="alert alert-danger col-2 d-flex justify-content-center" role="alert">
+                  <%= flash[:error_sesion] %>
+              </div>
+      <% end %>
+    </div>
+
   <div class="container contenedor mb-5">  
     <%= yield %>
   </div>

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  
+  #Rutas para inicio de sesión de administradores
+  #Como el inicio lo haremos en un boton dentro de la barra de navegación, no haremos un get sino solamente un post y delete
+  #get "/",                to: "sesiones#login", as: "login"
+  post "sesiones",        to: "sesiones#iniciar_sesion",     as: "iniciar_sesion"
+  delete "sesiones",      to: "sesiones#cerrar_sesion",      as: "cerrar_sesion"
+  
   root 'paginas#inicio'
   get 'carrito',          to: 'paginas#carro',          as: 'carrito'
 
@@ -76,7 +83,9 @@ Rails.application.routes.draw do
     put "pedidos/:id/productos/:id_producto",                 to: "pedidos#aumentar_cantidad_producto",   as: "aumentar_producto"
     delete "pedidos/:id/productos/:id_producto",              to: "pedidos#disminuir_cantidad_producto",  as: "disminuir_producto"
     delete "pedidos/:id/productos/:id_producto/eliminar",     to: "pedidos#eliminar_producto",            as: "eliminar_producto"
+
     
+        
   end
 
 end

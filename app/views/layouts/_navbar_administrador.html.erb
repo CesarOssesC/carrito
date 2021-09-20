@@ -16,12 +16,20 @@
           <a class="nav-link bi bi-bookmark-fill" href="/admin/categorias">Categorías</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link bi bi-receipt-cutoff" href="/admin">Pedidos</a>
+          <a class="nav-link bi bi-receipt-cutoff" href="/admin/">Pedidos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link bi bi-signpost-2-fill" href="/admin/destinos">Destinos</a>
         </li>
       </ul>
+      <div class="dropdown" >
+        <button class="btn btn-primary dropdown-toggle px-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= @usuario_actual.nombre %>
+        </button><!-- Opción para mostrar el formulario ⏬ -->
+        <div class="dropdown-menu px-4">
+            <%= link_to "Cerrar sesión", cerrar_sesion_path, class: "btn btn-warning m-auto", method: :delete, data: { confirm: "Está seguro de cerrar sesión?" } %>
+        </div>
+      </div>
       
     </div>
   </div>

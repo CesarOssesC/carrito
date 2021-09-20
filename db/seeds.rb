@@ -54,8 +54,14 @@ Region.create ([
     {nombre: 'Sin Región'}
 ])
 
+# Este queda comentado porque destino no es unico entonces cada vez que se hace el seed se repite. 
 # Destino.create(
 #     {nombre: 'Sin Destino', region: Region.find_by(nombre: 'Sin Región')}
 # )
 
 
+Administrador.create([
+    {nombre: 'César Osses', correo: 'cesar.osses@gmail.com', password: Rails.application.credentials.admin[:password1]},
+    { nombre: "Coni López", correo: "coni.lopez@gmail.com", password: Rails.application.credentials.admin[:password2]}
+
+])

@@ -1,0 +1,28 @@
+<div class="container">    
+    <h1>Iniciar Sesión</h1>
+    <% if flash[:error_sesion] %>
+            <div class="alert alert-danger" role="alert">
+                <%= flash[:error_sesion] %>
+            </div>
+        <% end %>
+
+    <%= form_with(url: "sesiones") do |formulario| %>
+            
+        <div class="mb-3">    
+            <%= formulario.label :nombre_usuario, class: "from-label" %>
+            <%= formulario.text_field :nombre_usuario, class: "form-control" %>
+            <div id="passwordHelpBlock" class="form-text">
+                Su password debe ser de al menos 8-20 caracteres de largo, contener letras y números y no debe contener caracteres especiales o emojis
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <%= formulario.label :password, class: "from-label" %>
+            <%= formulario.password_field :password, class: "form-control" %>
+        </div>
+        
+        
+        <br>
+            <%= formulario.submit "Iniciar Sesión", class: "btn btn-primary" %>
+    <% end %>
+</div>
