@@ -6,6 +6,7 @@ ActiveSupport::Inflector.inflections do |inflect|
     inflect.irregular 'region', 'regiones'
     inflect.irregular 'venta', 'ventas'
     inflect.irregular 'administrador', 'administradores'
+    inflect.irregular 'usuario', 'usuarios'
 
     #inflect.plural /^(aeo)$/i, '\1s'
 end

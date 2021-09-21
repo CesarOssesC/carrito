@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   
+  
+  devise_for :usuarios, controllers: {
+    sessions: 'usuarios/sessions',
+    registrations: 'usuarios/registrations',
+    unlocks: 'usuarios/unlocks',
+    passwords: 'usuarios/passwords',
+    confirmations: 'usuarios/confirmations',
+    omniauthable: 'usuarios/omniauths_callbacks'
+  }
   #Rutas para inicio de sesión de administradores
   #Como el inicio lo haremos en un boton dentro de la barra de navegación, no haremos un get sino solamente un post y delete
   #get "/",                to: "sesiones#login", as: "login"

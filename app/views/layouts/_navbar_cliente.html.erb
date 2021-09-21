@@ -23,22 +23,24 @@
         </li>
         
       </ul>
-      <% if usuario_ha_iniciado_sesion? %>
+      <% if cliente_signed_in? %>
         <div class="dropdown" >
           <button class="btn btn-primary dropdown-toggle px-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= @usuario_actual.nombre %>
+            <i class="bi bi-person-circle"></i>
+            <%= current_cliente.nombre %>
           </button><!-- Opción para mostrar el formulario ⏬ -->
           <div class="dropdown-menu px-4">
-              <%= link_to "Cerrar sesión", cerrar_sesion_path, class: "btn btn-warning m-auto", method: :delete, data: { confirm: "está seguro de cerrar sesión?" } %>
+              <%= link_to "Cerrar sesión", destroy_cliente_session_path, class: "btn btn-warning m-auto", method: :delete, data: { confirm: "Está seguro de cerrar sesión?" } %>
           </div>
         </div>
 
       <% else %>  
       <div class="dropdown" >
         <button class="btn btn-primary dropdown-toggle px-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person-circle"></i>
           Iniciar Sesión
         </button>
-        <%= form_with(url: iniciar_sesion_path, class: 'dropdown-menu p-4') do |formulario| %>
+        <%= form_with(url: usuario_session_path, class: 'dropdown-menu p-4') do |formulario| %>
           <div class="mb-3">
             <%= formulario.label :correo, class: 'form-label' %>
             <%= formulario.text_field :correo, class: 'form-control', placeholder: 'correo@ejemplo.com' %>
